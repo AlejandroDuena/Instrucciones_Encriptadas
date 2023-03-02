@@ -1,7 +1,7 @@
-public class exceptions {
+public class Exceptions {
 
     public static void verificadorIns(){
-        leerDocumento LD = new leerDocumento();
+        Lector LD = new Lector();
         int caractIns1 = LD.getCaractInstruccion_uno();
         int caractIns2 = LD.getCaractInstruccion_dos();
         int caractMen = LD.getCaractMensajeIncriptado();
@@ -36,7 +36,6 @@ public class exceptions {
 
                 if(caractMen != men.length()) System.out.println("El tamaño esperado no coincide con el mensaje encriptado.");
         }
-        else System.out.println("El formato del archivo no es el correcto, por favor revisarlo.");
     }
 
     private static String validarCaracteres(String ins, String men){

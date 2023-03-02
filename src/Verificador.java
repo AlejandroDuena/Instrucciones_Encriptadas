@@ -1,12 +1,11 @@
 public class Verificador {
     public String instruc1() {
 
-        leerDocumento LD = new leerDocumento();
-        int instruccion_uno = LD.getCaractInstruccion_uno();
-        int instruccion_dos = LD.getCaractInstruccion_dos();
-        int mensajeIncriptado = LD.getCaractMensajeIncriptado();
-        String instruccion1 = LD.getInstruccion1();
-        String mensaje = LD.getMensaje();
+        int instruccion_uno = lector.getCaractInstruccion_uno();
+        int instruccion_dos = lector.getCaractInstruccion_dos();
+        int mensajeIncriptado = lector.getCaractMensajeIncriptado();
+        String instruccion1 = lector.getInstruccion1();
+        String mensaje = lector.getMensaje();
         String instruc_1 = "";
 
         if ((mensajeIncriptado >= 3 && mensajeIncriptado <= 5000) &&
@@ -28,16 +27,18 @@ public class Verificador {
                 instruc_1 = "NO";
             }
         }
+        else{
+          enviarError("Los parametros establecidos no se cumplen, por favor revise que estos se esten cumpliendo.");
+        }
         return instruc_1;
     }
     public String instruc2() {
 
-        leerDocumento LD = new leerDocumento();
-        int instruccion_uno = LD.getCaractInstruccion_uno();
-        int instruccion_dos = LD.getCaractInstruccion_dos();
-        int mensajeIncriptado = LD.getCaractMensajeIncriptado();
-        String instruccion2 = LD.getInstruccion2();
-        String mensaje = LD.getMensaje();
+        int instruccion_uno = lector.getCaractInstruccion_uno();
+        int instruccion_dos = lector.getCaractInstruccion_dos();
+        int mensajeIncriptado = lector.getCaractMensajeIncriptado();
+        String instruccion2 = lector.getInstruccion2();
+        String mensaje = lector.getMensaje();
         String instruc_2 = "";
 
         if ((mensajeIncriptado >= 3 && mensajeIncriptado <= 5000) &&
@@ -46,19 +47,26 @@ public class Verificador {
             int i = 0;
             int j = 0;
 
-            while (i < mensaje.length()-1 && j < instruccion2.length()) {
+            while (i < mensaje.length() - 1 && j < instruccion2.length()) {
                 i++;
                 if (instruccion2.charAt(j) == mensaje.charAt(i)) {
                     j++;
                 }
             }
-            if (j == instruccion2.length())
-            {
+            if (j == instruccion2.length()) {
                 instruc_2 = "SI";
             } else {
                 instruc_2 = "NO";
             }
         }
         return instruc_2;
+    }
+    private void enviarError(String error){
+        System.out.println(error);
+        System.exit(-1);
+    }
+    private Lector lector;
+    public void setlector(Lector lector){
+        this.lector = lector;
     }
 }
