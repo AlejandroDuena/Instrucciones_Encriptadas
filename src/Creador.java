@@ -1,4 +1,6 @@
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Creador {
@@ -14,12 +16,13 @@ public class Creador {
         salidaArchivo = args[1];
         LD.leerArchivo(entradaArchivo);
         Verificador ver = new Verificador();
-        ver.setlector(LD);
+        ver.setLector(LD);
+        Exceptions exc = new Exceptions();
+        exc.setLector(LD);
         String instruc1 = ver.instruc1();
         String instruc2 = ver.instruc2();
         FileWriter fichero = null;
         PrintWriter pw;
-
         try {
             fichero = new FileWriter(salidaArchivo);
             pw = new PrintWriter(fichero);
@@ -29,12 +32,14 @@ public class Creador {
             e.printStackTrace();
         } finally {
             try {
-                if (null != fichero) ;
+                assert fichero != null;
                 fichero.close();
-
-                Exceptions.verificadorIns(); }
-            catch (Exception e2) {
-                e2.printStackTrace();
+                Exceptions.verificadorIns();
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }

@@ -66,7 +66,7 @@ public class Verificador {
         System.exit(-1);
     }
     private Lector lector;
-    public void setlector(Lector lector){
+    public void setLector(Lector lector) {
         this.lector = lector;
     }
 }

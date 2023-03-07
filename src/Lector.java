@@ -22,7 +22,7 @@ import java.util.Scanner;
          int n = 0;
          String instruc1 = "";
          String instruc2 = "";
-         String mensaje = "";
+         String men = "";
          try {
              sc = new Scanner(archivo);
              m1 = sc.nextInt();
@@ -35,9 +35,8 @@ import java.util.Scanner;
              setIntruccion1(instruc1);
              instruc2 = sc.next();
              setInstruccion2(instruc2);
-             mensaje = sc.next();
-             setMensaje(mensaje);
-
+             men = sc.next();
+             setMensaje(men);
          } catch (FileNotFoundException e) {
              System.out.println("Error a leer los datos, por favor verificar que el formato sea correcto.");
          }
